@@ -15,9 +15,10 @@ namespaces. Nest uses [eredis
 
     >> {:ok, redis} = :eredis.start_link
     >> event = Nest.new(key: "event", redis: redis)
-    >> event[3][:attendies].sadd!("albert")
-    >> event[3][:attendies].smembers!
-    => ["Albert"]
+    >> event[3][:attendies].sadd("albert")
+    >> event[3][:attendies].smembers
+    => {:ok, ["Albert"]}
+
 
 Usage
 -----
@@ -75,12 +76,11 @@ return only the value, throwing any errors.
 
 Multiple arguements can be suppled as a List:
 
-    >> events[id][:orders].lpush(["beer", beer", "wine"])
+    >> events[id][:orders].rpush(["beer", beer", "wine"])
     => "3"
     >> events[id][:orders].lrange([0, -1])
     => ["beer", beer", "wine"]
 
-Overriding call/2
 
 
 License
@@ -88,6 +88,7 @@ License
 
 
 Copyright (c) 2013 Tyler Butchart
+
 Copyright (c) 2010 Michel Martens & Damian Janowski (for Ruby Nest)
 
 Permission is hereby granted, free of charge, to any person
