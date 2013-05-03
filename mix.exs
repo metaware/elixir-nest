@@ -15,6 +15,6 @@ defmodule Nest.Mixfile do
   # Returns the list of dependencies in the format:
   # { :foobar, "0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
-    [ { :eredis, "1.0.4", git: "https://github.com/wooga/eredis.git" } ]
+    [ { :eredis, github: "wooga/eredis", tag: "v1.0.5" } ]
   end
 end
